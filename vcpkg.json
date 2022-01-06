@@ -1,0 +1,22 @@
+{
+    "name": "orb-slam-3",
+    "version-string": "1.0.0",
+    "dependencies": [
+        "gtest",
+        "spdlog",  
+        "opencv3",
+        "eigen3",
+        {
+            "name": "pangolin",
+            "default-features" : false,
+            "features": ["eigen", 
+                         "gui",
+                         "png",
+                         "jpeg",
+                         "vars"]
+        },
+        "boost-serialization",        
+        "openssl"
+    ],
+    "overrides": []
+}
