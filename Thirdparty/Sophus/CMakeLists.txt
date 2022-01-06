@@ -36,6 +36,7 @@ find_package(Eigen3 3.3.0 REQUIRED)
 
 # Define interface library target
 add_library(sophus INTERFACE)
+add_library(ORB_SLAM::sophus ALIAS sophus)
 
 set(SOPHUS_HEADER_FILES
   sophus/average.hpp
@@ -97,14 +98,14 @@ target_compile_features (sophus INTERFACE
 add_custom_target(other SOURCES ${SOPHUS_OTHER_FILES})
 
 # Create 'test' make target using ctest
-option(BUILD_TESTS "Build tests." ON)
+option(BUILD_TESTS "Build tests." OFF)
 if(BUILD_TESTS)
     enable_testing()
     add_subdirectory(test)
 endif()
 
 # Create examples make targets using ctest
-option(BUILD_EXAMPLES "Build examples." ON)
+option(BUILD_EXAMPLES "Build examples." OFF)
 if(BUILD_EXAMPLES)
     add_subdirectory(examples)
 endif()
