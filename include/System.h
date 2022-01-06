@@ -21,7 +21,6 @@
 #define SYSTEM_H
 
 
-#include <unistd.h>
 #include<stdio.h>
 #include<stdlib.h>
 #include<string>
@@ -70,6 +69,8 @@ public:
         th = _th;
     }
 };
+
+void usleep(int us_sec);
 
 class Viewer;
 class FrameDrawer;
