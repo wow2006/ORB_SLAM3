@@ -36,6 +36,10 @@
 namespace ORB_SLAM3
 {
 
+void ORB_SLAM3::usleep(int us_sec){
+    std::this_thread::sleep_for(std::chrono::microseconds(us_sec));
+}
+
 Verbose::eLevel Verbose::th = Verbose::VERBOSITY_NORMAL;
 
 System::System(const string &strVocFile, const string &strSettingsFile, const eSensor sensor,
@@ -174,7 +178,7 @@ System::System(const string &strVocFile, const string &strSettingsFile, const eS
         //unsigned msElapsed = timeElapsed / (CLOCKS_PER_SEC / 1000);
         //cout << "Binary file read in " << msElapsed << " ms" << endl;
 
-        //usleep(10*1000*1000);
+        //ORB_SLAM3::usleep(10*1000*1000);
     }
 
 
@@ -223,7 +227,7 @@ System::System(const string &strVocFile, const string &strSettingsFile, const eS
     mpLoopCloser->SetTracker(mpTracker);
     mpLoopCloser->SetLocalMapper(mpLocalMapper);
 
-    //usleep(10*1000*1000);
+    //ORB_SLAM3::usleep(10*1000*1000);
 
     //Initialize the Viewer thread and launch
     if(bUseViewer)
@@ -278,7 +282,7 @@ Sophus::SE3f System::TrackStereo(const cv::Mat &imLeft, const cv::Mat &imRight, 
             // Wait until Local Mapping has effectively stopped
             while(!mpLocalMapper->isStopped())
             {
-                usleep(1000);
+                ORB_SLAM3::usleep(1000);
             }
 
             mpTracker->InformOnlyTracking(true);
@@ -353,7 +357,7 @@ Sophus::SE3f System::TrackRGBD(const cv::Mat &im, const cv::Mat &depthmap, const
             // Wait until Local Mapping has effectively stopped
             while(!mpLocalMapper->isStopped())
             {
-                usleep(1000);
+                ORB_SLAM3::usleep(1000);
             }
 
             mpTracker->InformOnlyTracking(true);
@@ -428,7 +432,7 @@ Sophus::SE3f System::TrackMonocular(const cv::Mat &im, const double &timestamp, 
             // Wait until Local Mapping has effectively stopped
             while(!mpLocalMapper->isStopped())
             {
-                usleep(1000);
+                ORB_SLAM3::usleep(1000);
             }
 
             mpTracker->InformOnlyTracking(true);
@@ -527,7 +531,7 @@ void System::Shutdown()
     {
         mpViewer->RequestFinish();
         while(!mpViewer->isFinished())
-            usleep(5000);
+            ORB_SLAM3::usleep(5000);
     }*/
 
     // Wait until all thread have effectively stopped
@@ -542,7 +546,7 @@ void System::Shutdown()
             cout << "break anyway..." << endl;
             break;
         }*/
-        /*usleep(5000);
+        /*ORB_SLAM3::usleep(5000);
     }*/
 
     if(!mStrSaveAtlasToFile.empty())

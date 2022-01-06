@@ -252,7 +252,7 @@ Map* Atlas::GetCurrentMap()
     if(!mpCurrentMap)
         CreateNewMap();
     while(mpCurrentMap->IsBad())
-        usleep(3000);
+        ORB_SLAM3::usleep(3000);
 
     return mpCurrentMap;
 }

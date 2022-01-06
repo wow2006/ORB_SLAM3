@@ -372,7 +372,7 @@ void Viewer::Run()
         {
             while(isStopped())
             {
-                usleep(3000);
+                ORB_SLAM3::usleep(3000);
             }
         }
 
