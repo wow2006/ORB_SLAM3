@@ -2,8 +2,6 @@
     "name": "orb-slam-3",
     "version-string": "1.0.0",
     "dependencies": [
-        "gtest",
-        "spdlog",  
         "opencv3",
         "eigen3",
         {
