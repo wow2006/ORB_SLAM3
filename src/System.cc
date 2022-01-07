@@ -36,7 +36,7 @@
 namespace ORB_SLAM3
 {
 
-void ORB_SLAM3::usleep(int us_sec){
+void usleep(int us_sec){
     std::this_thread::sleep_for(std::chrono::microseconds(us_sec));
 }
 
